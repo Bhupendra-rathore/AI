@@ -15,10 +15,11 @@ schema=[
 ]
 parser=StructuredOutputParser.from_response_schemas(schema)
 template=PromptTemplate(
-    template='give me the name age and city of the fictional person \n{formate_instructions}',
-    input_variables=[],
+    template='give me the name age and city  of the fictional{person} person \n{formate_instructions}',
+    input_variables=['person'],
     partial_variables={'formate_instructions':parser.get_format_instructions()}
 )
 chain=template | model | parser
-result=chain.invoke({})
+input_data=input("Enter the place")
+result=chain.invoke({'person':input_data})
 print(result)
