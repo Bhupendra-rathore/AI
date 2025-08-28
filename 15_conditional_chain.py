@@ -27,12 +27,12 @@ prompt1=PromptTemplate(
 classifier_chain=prompt1|model |parser2
 
 prompt2=PromptTemplate(
-    template='write appropriate statement for this positive feedback \n{feedback}',
+    template='write appropiate statement for this positive feedback \n{feedback}',
     input_variables=['feedback'],
 )
 
 prompt3=PromptTemplate(
-    template='write one word statement for this negative feedback \n{feedback}',
+    template='write appropiate statement for this negative feedback \n{feedback}',
     input_variables=['feedback'],
 )
 
@@ -47,4 +47,4 @@ chain=classifier_chain| branch_chain
 print(chain.invoke({'feedback':"This is a very good phone"}))
 
 
-#  chain.get_graph().print_ascii()
+# chain.get_graph().print_ascii()
